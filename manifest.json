@@ -1,0 +1,71 @@
+{
+    "background": {
+        "service_worker": "js/sw.js"
+    },
+    "action": {
+        "default_popup": "html/popup.html"
+    },
+    "content_scripts": [{
+            "js": [
+                "js/content.js"
+            ],
+            "matches": [
+                "\u003Call_urls>"
+            ]
+        },
+        {
+            "matches": [
+                "https://app.snov.io/*"
+            ],
+            "js": [
+                "js/constants.js",
+                "js/snovio/snovioEvents.js"
+            ],
+            "run_at": "document_end"
+        },
+        {
+            "matches": [
+                "https://app.snov.io/*"
+            ],
+            "js": [
+                "js/snovio/presence.js"
+            ],
+            "run_at": "document_idle"
+        },
+        {
+            "matches": [
+                "https://app.snov.io/*"
+            ],
+            "js": [
+                "js/snovio/signForApp.js"
+            ],
+            "run_at": "document_start"
+        }
+    ],
+    "default_locale": "en",
+    "description": "__MSG_appDesc__",
+    "icons": {
+        "128": "img/128.png",
+        "19": "img/19.png",
+        "48": "img/48.png"
+    },
+    "manifest_version": 3,
+    "name": "__MSG_appName__",
+    "permissions": [
+        "tabs",
+        "cookies",
+        "notifications",
+        "storage",
+        "webRequest",
+        "contextMenus",
+        "alarms"
+    ],
+    "host_permissions": [
+        "http://*/",
+        "https://*/"
+    ],
+    "homepage_url": "https://snov.io/extension",
+    "short_name": "__MSG_appShortName__",
+    "update_url": "https://clients2.google.com/service/update2/crx",
+    "version": "2.2.7"
+}
